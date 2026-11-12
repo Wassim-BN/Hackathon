@@ -9,7 +9,7 @@
 ## Installation
 
 ```bash
-git clone [https://github.com/Wassim-BN/Hackathon]
+git clone https://github.com/Wassim-BN/Hackathon
 cd [Hackathon]
 composer install
 ```
