@@ -24,12 +24,6 @@ Inscription
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $competence = null;
 
-    #[ORM\Column]
-    private ?int $idHackathon = null;
-
-    #[ORM\Column]
-    private ?int $idParticipant = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -67,30 +61,6 @@ Inscription
     public function setCompetence(?string $competence): static
     {
         $this->competence = $competence;
-
-        return $this;
-    }
-
-    public function getIdHackathon(): ?int
-    {
-        return $this->idHackathon;
-    }
-
-    public function setIdHackathon(int $idHackathon): static
-    {
-        $this->idHackathon = $idHackathon;
-
-        return $this;
-    }
-
-    public function getIdParticipant(): ?int
-    {
-        return $this->idParticipant;
-    }
-
-    public function setIdParticipant(int $idParticipant): static
-    {
-        $this->idParticipant = $idParticipant;
 
         return $this;
     }

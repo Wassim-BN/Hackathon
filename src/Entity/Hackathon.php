@@ -13,12 +13,6 @@ class Hackathon
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 100, nullable: true)]
-    private ?string $dateHeureDebut = null;
-
-    #[ORM\Column(length: 100, nullable: true)]
-    private ?string $dateHeureFin = null;
-
     #[ORM\Column(length: 50)]
     private ?string $lieu = null;
 
@@ -27,6 +21,16 @@ class Hackathon
 
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $theme = null;
+
+    #[ORM\ManyToOne(inversedBy: 'hackathons')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Organisateur $organisateur = null;
+
+    #[ORM\Column]
+    private ?\DateTime $dateHeureDebut = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTime $dateHeureFin = null;
 
     public function getId(): ?int
     {
@@ -40,29 +44,6 @@ class Hackathon
         return $this;
     }
 
-    public function getDateHeureDebut(): ?string
-    {
-        return $this->dateHeureDebut;
-    }
-
-    public function setDateHeureDebut(?string $dateHeureDebut): static
-    {
-        $this->dateHeureDebut = $dateHeureDebut;
-
-        return $this;
-    }
-
-    public function getDateHeureFin(): ?string
-    {
-        return $this->dateHeureFin;
-    }
-
-    public function setDateHeureFin(?string $dateHeureFin): static
-    {
-        $this->dateHeureFin = $dateHeureFin;
-
-        return $this;
-    }
 
     public function getlieu(): ?string
     {
@@ -99,4 +80,41 @@ class Hackathon
 
         return $this;
     }
+
+    public function getOrganisateur(): ?Organisateur
+    {
+        return $this->organisateur;
+    }
+
+    public function setOrganisateur(?Organisateur $organisateur): static
+    {
+        $this->organisateur = $organisateur;
+
+        return $this;
+    }
+
+    public function getDateHeureDebut(): ?\DateTime
+    {
+        return $this->dateHeureDebut;
+    }
+
+    public function setDateHeureDebut(\DateTime $dateHeureDebut): static
+    {
+        $this->dateHeureDebut = $dateHeureDebut;
+
+        return $this;
+    }
+
+    public function getDateHeureFin(): ?\DateTime
+    {
+        return $this->dateHeureFin;
+    }
+
+    public function setDateHeureFin(?\DateTime $dateHeureFin): static
+    {
+        $this->dateHeureFin = $dateHeureFin;
+
+        return $this;
+    }
+
 }
